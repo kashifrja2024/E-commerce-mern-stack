@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { Container, Form, Button } from "react-bootstrap";
 
 
 const AddProduct = () => {
@@ -91,15 +92,64 @@ const AddProduct = () => {
 
 
     return (
-        <div className="register" >
-            <h1>Update Product Product</h1>
-            <input type="text" placeholder="Enter Name" value={name} onChange={(e) => { setName(e.target.value) }} className="inputBox" />
-            {/* {error && !name && <span className="invailid-input">Enter vailid name</span>} */}
-            <input type="text" placeholder="Enter price" value={price} onChange={(e) => { setPrice(e.target.value) }} className="inputBox" />
-            <input type="text" placeholder="Enter catogary" value={category} onChange={(e) => { setCategory(e.target.value) }} className="inputBox" />
-            <input type="text" placeholder="Enter company" value={company} onChange={(e) => { setCompany(e.target.value) }} className="inputBox" />
-            <button className="appbutton" onClick={updateProduct} >Update product</button>
-        </div>
+        // <div className="register" >
+        //     <h1>Update Product Product</h1>
+        //     <input type="text" placeholder="Enter Name" value={name} onChange={(e) => { setName(e.target.value) }} className="inputBox" />
+        //     {/* {error && !name && <span className="invailid-input">Enter vailid name</span>} */}
+        //     <input type="text" placeholder="Enter price" value={price} onChange={(e) => { setPrice(e.target.value) }} className="inputBox" />
+        //     <input type="text" placeholder="Enter catogary" value={category} onChange={(e) => { setCategory(e.target.value) }} className="inputBox" />
+        //     <input type="text" placeholder="Enter company" value={company} onChange={(e) => { setCompany(e.target.value) }} className="inputBox" />
+        //     <button className="appbutton" onClick={updateProduct} >Update product</button>
+        // </div>
+
+        <Container className="mt-5" style={{ maxWidth: "600px" }}>
+            <h3 className="mb-4">Update Product</h3>
+            <Form>
+                <Form.Group className="mb-3" controlId="formProductName">
+                    <Form.Label>Product Name</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formPrice">
+                    <Form.Label>Price</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter price"
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)}
+                    />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formCategory">
+                    <Form.Label>Category</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter category"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                    />
+                </Form.Group>
+
+                <Form.Group className="mb-4" controlId="formCompany">
+                    <Form.Label>Company</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter company"
+                        value={company}
+                        onChange={(e) => setCompany(e.target.value)}
+                    />
+                </Form.Group>
+
+                <Button style={{ backgroundColor: "#135874" }} onClick={updateProduct}>
+                    Update Product
+                </Button>
+            </Form>
+        </Container>
     )
 }
 export default AddProduct; 
