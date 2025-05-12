@@ -1,6 +1,5 @@
 // import logo from './logo.svg';
 import './App.css';
-import Nav from './components/Nav';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Footer from './components/Footer';
 import SignUp from './components/SignUp';
@@ -9,11 +8,14 @@ import Login from './components/Login';
 import AddProduct from './components/AddProduct';
 import ProductList from './components/ProductList';
 import UpdateProduct from './components/UpdateProduct';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navigation from './components/Navigation';
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Nav />
+        <Navigation />
         <Routes>
           <Route element={<PrivateComponent />}>
             <Route path='/' element={<ProductList />} />

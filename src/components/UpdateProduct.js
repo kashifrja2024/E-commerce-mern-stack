@@ -43,7 +43,11 @@ const AddProduct = () => {
         try {
             console.log(params);
 
-            let response = await fetch(`http://localhost:5000/product/${params.id}`);
+            let response = await fetch(`http://localhost:5000/product/${params.id}`, {
+                headers: {
+                    authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`
+                }
+            });
             let result = await response.json();
 
             console.log("result", result); // Do something with `result`
@@ -67,7 +71,8 @@ const AddProduct = () => {
                 method: "PUT",
                 body: JSON.stringify({ name, price, category, company }),
                 headers: {
-                    'Content-Type': "application/json"
+                    'Content-Type': "application/json",
+                    authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`
                 }
             });
 
