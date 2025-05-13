@@ -167,7 +167,7 @@ const ProductList = () => {
                 <tbody>
                     {
                         products.length > 0 ? products.map((item, index) => (
-                            <tr>
+                            <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{item.name}</td>
                                 <td>{item.price}</td>
