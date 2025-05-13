@@ -105,6 +105,7 @@ const SignUp = () => {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
     const navigate = useNavigate()
+    const baseUrl = process.env.REACT_APP_BACKEND_BASEURL;
     useEffect(() => {
         const auth = localStorage.getItem('user');
         if (auth) {
@@ -148,7 +149,7 @@ const SignUp = () => {
     const collectData = async () => {
         if (validate()) {
             console.log(name, email, password);
-            let result = await fetch("http://localhost:5000/register", {
+            let result = await fetch(`${baseUrl}/register`, {
                 method: "post",
                 body: JSON.stringify({ name, email, password }),
                 headers: {
@@ -170,7 +171,7 @@ const SignUp = () => {
 
     return (
         <Container style={{ maxWidth: "500px", marginTop: "50px" }}>
-            <h3 className="mb-4">Sign Up</h3>
+            <h3 className="mb-4 text-color">Sign Up</h3>
             <Form>
                 <Form.Group className="mb-3" controlId="formName">
                     <Form.Label>Name</Form.Label>

@@ -56,6 +56,7 @@ const Login = () => {
     const [validated, setValidated] = useState(false);
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const baseUrl = process.env.REACT_APP_BACKEND_BASEURL;
 
     useEffect(() => {
         const auth = localStorage.getItem('user');
@@ -75,7 +76,7 @@ const Login = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:5000/login", {
+            const response = await fetch(`${baseUrl}/login`, {
                 method: "POST",
                 body: JSON.stringify({ email, password }),
                 headers: {
@@ -103,7 +104,7 @@ const Login = () => {
 
     return (
         <Container className="mt-5" style={{ maxWidth: "400px" }}>
-            <h3>Login</h3>
+            <h3 className="text-color">Login</h3>
             {error && <Alert variant="danger">{error}</Alert>}
 
             <Form noValidate validated={validated} onSubmit={handleSubmit}>

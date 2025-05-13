@@ -13,6 +13,7 @@ const AddProduct = () => {
     const [category, setCategory] = useState("");
     const [company, setCompany] = useState("");
     const [error, setError] = useState(false);
+    const baseUrl = process.env.REACT_APP_BACKEND_BASEURL;
 
     const addHandler = async () => {
         console.log(name, price, category, company);
@@ -22,7 +23,7 @@ const AddProduct = () => {
         }
         const userId = JSON.parse(localStorage.getItem('user')).id;
 
-        let result = await fetch("http://localhost:5000/add-product", {
+        let result = await fetch(`${baseUrl}/add-product`, {
             method: "post",
             body: JSON.stringify({ name, price, category, company, userId }),
             headers: {

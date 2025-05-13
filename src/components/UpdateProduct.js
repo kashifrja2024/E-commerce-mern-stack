@@ -11,6 +11,8 @@ const AddProduct = () => {
     const [company, setCompany] = useState("");
     const params = useParams();
     const navigate = useNavigate();
+    const baseUrl = process.env.REACT_APP_BACKEND_BASEURL;
+
     // const [error, setError] = React.useState(false);
 
     // const addHandler = async () => {
@@ -44,7 +46,7 @@ const AddProduct = () => {
         try {
             console.log(params);
 
-            let response = await fetch(`http://localhost:5000/product/${params.id}`, {
+            let response = await fetch(`${process.env.REACT_APP_BACKEND_BASEURL}/product/${params.id}`, {
                 headers: {
                     authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`
                 }
@@ -68,7 +70,7 @@ const AddProduct = () => {
         console.log(name, price, category, company);
 
         try {
-            const response = await fetch(`http://localhost:5000/product/${params.id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_BASEURL}/product/${params.id}`, {
                 method: "PUT",
                 body: JSON.stringify({ name, price, category, company }),
                 headers: {
@@ -102,8 +104,8 @@ const AddProduct = () => {
         //     <button className="appbutton" onClick={updateProduct} >Update product</button>
         // </div>
 
-        <Container className="mt-5" style={{ maxWidth: "600px" }}>
-            <h3 className="mb-4">Update Product</h3>
+        <Container className="mt-5" style={{ maxWidth: "600px", marginBottom: "50px" }}>
+            <h3 className="mb-4 text-color">Update Product</h3>
             <Form>
                 <Form.Group className="mb-3" controlId="formProductName">
                     <Form.Label>Product Name</Form.Label>

@@ -94,6 +94,9 @@
 #upd-btn{
   margin-left: 10px;
 }
+.text-color{
+  color: #90d9f6
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

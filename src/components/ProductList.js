@@ -11,6 +11,7 @@ const ProductList = () => {
     const [products, setProducts] = useState([]);
     console.log("products", products);
 
+    const baseUrl = process.env.REACT_APP_BACKEND_BASEURL;
 
     useEffect(() => {
         getProduct();
@@ -26,7 +27,7 @@ const ProductList = () => {
 
     const getProduct = async () => {
         try {
-            const response = await fetch("http://localhost:5000/product",
+            const response = await fetch(`${baseUrl}/product`,
                 {
                     headers: {
                         authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`
@@ -66,7 +67,7 @@ const ProductList = () => {
         try {
             console.log("Deleting item:", itemId);
 
-            const response = await fetch(`http://localhost:5000/product/${itemId}`, {
+            const response = await fetch(`${baseUrl}/product/${itemId}`, {
                 method: "DELETE",
 
                 headers: {
@@ -95,7 +96,7 @@ const ProductList = () => {
         if (key) {
 
 
-            let result = await fetch(`http://localhost:5000/search/${key}`, {
+            let result = await fetch(`${baseUrl}/search/${key}`, {
                 headers: {
                     authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`
                 }
